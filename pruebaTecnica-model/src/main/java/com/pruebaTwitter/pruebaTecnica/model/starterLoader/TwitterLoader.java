@@ -2,8 +2,10 @@ package com.pruebaTwitter.pruebaTecnica.model.starterLoader;
 
 import com.pruebaTwitter.pruebaTecnica.api.service.TweetsManagementService;
 import com.pruebaTwitter.pruebaTecnica.api.service.TwitterService;
+import com.pruebaTwitter.pruebaTecnica.model.service.TwitterServiceImpl;
 import org.slf4j.Logger;
 import com.pruebaTwitter.pruebaTecnica.api.dto.TweetDTO;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -18,8 +20,7 @@ import java.util.stream.Collectors;
 @Component
 public class TwitterLoader {
 
-    @Autowired
-    Logger log;
+    Logger log = LoggerFactory.getLogger(TwitterServiceImpl.class);
 
     @Autowired
     TwitterService twitterService;
@@ -29,7 +30,7 @@ public class TwitterLoader {
 
 
     @Value( "${twitter.starter.load}" )
-    String usersToLoad;
+    String[] usersToLoad;
 
 
 
@@ -38,7 +39,7 @@ public class TwitterLoader {
         log.info("Loading initial tweets");
         List<TweetDTO> tweetList = new ArrayList<>();
 
-        Arrays.asList(usersToLoad.split(",")).forEach(
+        Arrays.asList(usersToLoad).forEach(
                 user -> tweetList.addAll(statusToDTO(getTweets(user)))
         );
 
@@ -57,7 +58,7 @@ public class TwitterLoader {
      */
     public List<TweetDTO> statusToDTO(List<Status> statusList){
         return statusList.stream()
-                .map(status -> new TweetDTO((int)(status.getId()),status.getUser().getName(),status.getText(),status.getLang(),false))
+                .map(status -> new TweetDTO((int)(status.getId()),status.getUser().getName(),status.getText(),status.getLang(), Boolean.FALSE))
                 .collect(Collectors.toList());
     }
 

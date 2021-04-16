@@ -1,5 +1,6 @@
 package com.pruebaTwitter.pruebaTecnica.api.dto;
 
+
 import java.io.Serializable;
 
 public class TweetDTO implements Serializable {
@@ -8,17 +9,17 @@ public class TweetDTO implements Serializable {
     private String userName;
     private String text;
     private String locale;
-    private boolean valid;
+    private Boolean validated;
 
     public TweetDTO() {
     }
 
-    public TweetDTO(Integer userId, String userName, String text, String locale, boolean valid) {
+    public TweetDTO(Integer userId, String userName, String text, String locale, Boolean validated) {
         this.userId = userId;
         this.userName = userName;
         this.text = text;
         this.locale = locale;
-        this.valid = valid;
+        this.validated = validated;
     }
 
     public Integer getUserId() {
@@ -53,11 +54,11 @@ public class TweetDTO implements Serializable {
         this.locale = locale;
     }
 
-    public boolean isValid() {
-        return valid;
+    public Boolean getValidated() {
+        return validated;
     }
 
-    public void setValid(boolean valid) {
-        this.valid = valid;
+    public void setValidated(Boolean valid) {
+        this.validated = valid;
     }
 }

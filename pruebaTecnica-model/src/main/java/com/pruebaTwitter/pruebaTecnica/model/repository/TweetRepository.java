@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface TweetRepository extends JpaRepository<Tweet, Integer> {
 
-    List<Tweet> findByValidTrue();
+    List<Tweet> findByValidatedTrueAndUserNameLike(String userName);
 
 }

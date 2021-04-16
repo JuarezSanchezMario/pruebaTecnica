@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface TweetsManagementService {
     List<TweetDTO> getAll();
-    List<TweetDTO> getValidatedTweets();
+    List<TweetDTO> getValidatedTweets(String user);
     boolean validate(Integer id);
-    boolean saveTweets(List<TweetDTO>tweets);
+    void saveTweets(List<TweetDTO>tweets);
     List<TwitterHashtagRelated> getMostUsedHashtags(Integer nHashtags);
 }

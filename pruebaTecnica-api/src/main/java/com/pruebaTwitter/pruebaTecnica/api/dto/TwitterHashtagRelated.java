@@ -3,7 +3,6 @@ package com.pruebaTwitter.pruebaTecnica.api.dto;
 import java.io.Serializable;
 
 public class TwitterHashtagRelated implements Serializable {
-    public String userName;
 
     public String hashtag;
 
@@ -12,18 +11,9 @@ public class TwitterHashtagRelated implements Serializable {
     public TwitterHashtagRelated() {
     }
 
-    public TwitterHashtagRelated(String userName, String hashtag, Integer nHashtags) {
-        this.userName = userName;
+    public TwitterHashtagRelated(String hashtag, Integer nHashtags) {
         this.hashtag = hashtag;
         this.nHashtags = nHashtags;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getHashtag() {

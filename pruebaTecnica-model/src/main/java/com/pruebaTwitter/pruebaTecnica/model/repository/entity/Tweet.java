@@ -4,9 +4,11 @@ package com.pruebaTwitter.pruebaTecnica.model.repository.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
-@Entity(name = "TWEETS")
+@Entity
+@Table(name = "TWITTER_BDD")
 public class Tweet {
 
     @Id
@@ -16,7 +18,7 @@ public class Tweet {
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "text")
+    @Column(name = "text",columnDefinition="LONGTEXT")
     private String text;
 
     @Column(name = "locale")
@@ -76,16 +78,4 @@ public class Tweet {
         this.validated = validated;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tweet tweet = (Tweet) o;
-        return userId.equals(tweet.userId) && userName.equals(tweet.userName) && text.equals(tweet.text) && locale.equals(tweet.locale) && validated.equals(tweet.validated);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, userName, text, locale, validated);
-    }
 }
